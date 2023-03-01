@@ -37,18 +37,32 @@ let deleteMovie = (e) => {
 
     // display remove message
     message.textContent = `Removed ${e.target.parentNode.textContent}!`
+
+    revealMessage();
 }
 
 let crossOffMovie = (e) => {
+
     // toggle checked list item
     e.target.classList.toggle('checked');
 
     // display message based on current value
     if (e.target.classList.contains('checked')) {
+
+        // cross off movie
         message.textContent = `${e.target.parentNode.textContent} Watched!`
+
+        // uncheck movie
     } else {
         message.textContent = `Added ${e.target.parentNode.textContent} Back!`
     }
+
+    revealMessage();
+}
+
+let revealMessage = () => {
+    message.classList.remove('hide');
+    setTimeout(() => message.classList.add('hide'), 1000);
 }
 
 document.querySelector('form').addEventListener('submit', addMovie);
